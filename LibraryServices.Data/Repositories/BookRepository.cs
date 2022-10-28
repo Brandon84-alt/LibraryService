@@ -35,6 +35,25 @@ namespace LibraryServices.Data.Repositories
             books.Add(book);
             return true;
         }
-        
+
+        public bool Remove(int id)
+        {
+           var book = GetBook(id);
+            if (book == null)
+            {
+                return false;
+            }
+            books.Remove(book);
+            return true;
+        }
+
+        public List<Book> UpdateBook(int id, Book book)
+        {
+            if (this.Remove(id)) {
+                this.AddNewBook(book);
+                return books;
+            }
+            return books;
+        }
     }
 }

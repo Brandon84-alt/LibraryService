@@ -44,5 +44,23 @@ namespace LibraryService.Controllers
             }
             return BadRequest();
         }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteBook(int id) {
+            if(books.Remove(id)) {
+                return Ok(books.GetAllBooks());
+            }
+            return NotFound();
+        }
+        [HttpPut]
+        public IHttpActionResult UpdateBook(int id, Book book)
+        {
+            var ubook = books.UpdateBook(id, book);
+            if (ubook != null)
+            {
+                return Ok(ubook);
+            }
+            return NotFound();
+        }
     }
 }
