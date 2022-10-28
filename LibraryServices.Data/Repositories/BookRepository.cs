@@ -55,5 +55,20 @@ namespace LibraryServices.Data.Repositories
             }
             return books;
         }
+
+        public List<Book> GetBookByAuthor(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetAuthorById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Book GetBookByAuthorAndYear(string author, int year)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

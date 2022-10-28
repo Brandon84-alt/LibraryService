@@ -24,9 +24,24 @@ namespace LibraryServices.Data.Repositories
            return db.Books.ToList();
         }
 
+        public string GetAuthorById(int id)
+        {
+            return db.Books.FirstOrDefault(x => x.Id == id).Author;
+        }
+
         public Book GetBook(int id)
         {
             return db.Books.FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<Book> GetBookByAuthor(string name)
+        {
+            return db.Books.Where(x => x.Author.Contains(name)).ToList();
+        }
+
+        public Book GetBookByAuthorAndYear(string author, int year)
+        {
+            return db.Books.FirstOrDefault(x=> x.PublicationYear == year && x.Author.Contains(author));
         }
 
         public bool Remove(int id)

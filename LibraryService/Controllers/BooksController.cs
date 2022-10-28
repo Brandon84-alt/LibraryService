@@ -8,9 +8,11 @@ using System.Net.Http;
 using LibraryServices.Data.Models;
 using LibraryServices.Data.Interfaces;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace LibraryService.Controllers
 {
+    [EnableCors(origins:"*",headers:"*", methods:"*")]
     public class BooksController : ApiController
     {
         private IBookRepository books;
@@ -61,6 +63,21 @@ namespace LibraryService.Controllers
                 return Ok(ubook);
             }
             return NotFound();
+        }
+
+        [HttpGet]
+        [Route("api/books/author/{id}")]
+        [Route("api/books/{id}/author")]
+        public IHttpActionResult GetAuthorById(int id) 
+        {
+            var authorName = books.GetAuthorById(id);
+            if (authorName == null)
+            {
+                return NotFound();
+
+            }
+            return Ok(authorName);
+                
         }
     }
 }
