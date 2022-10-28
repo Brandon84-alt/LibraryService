@@ -9,5 +9,7 @@ namespace LibraryServices.Data.Models
 {
     public class LibraryContext : DbContext
     {
+        public LibraryContext() : base("name=LibraryContext") {}
+        public DbSet<LibraryServices.Data.Models.Book> Books { get; set; }
     }
 }
