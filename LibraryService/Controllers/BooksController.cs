@@ -79,5 +79,17 @@ namespace LibraryService.Controllers
             return Ok(authorName);
                 
         }
+
+        [HttpGet]
+        [Route("api/books/author/{author}/year/{year}")]
+        public IHttpActionResult GetBookByAuthorAndYear(string author, int year) 
+        {
+            var book = books.GetBookByAuthorAndYear(author, year);
+            if (book == null)
+            {
+                return NotFound();
+            }
+            return Ok(book);
+        }
     }
 }
