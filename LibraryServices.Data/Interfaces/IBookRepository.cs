@@ -11,5 +11,6 @@ namespace LibraryServices.Data.Interfaces
     {
         List<Book> GetAllBooks();
         Book GetBook(int id);
+        bool AddNewBook(Book book);
     }
 }

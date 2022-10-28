@@ -31,7 +31,10 @@ namespace LibraryServices.Data.Repositories
             var book = books.FirstOrDefault(x => x.Id == id);
             return book;
         }
-
+        public bool AddNewBook(Book book) {
+            books.Add(book);
+            return true;
+        }
         
     }
 }
